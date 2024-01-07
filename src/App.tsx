@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Input } from "components/ui/input";
+import { NavBar } from "components/common";
 
 const Hero = () => {
   return (
@@ -15,7 +16,9 @@ function App() {
   return (
     <>
       <section>
-        <header></header>
+        <header className="flex flex-1 justify-center ">
+          <NavBar />
+        </header>
         <div>
           <Hero />
         </div>
