@@ -1,8 +1,11 @@
 import { observable, action, computed } from "mobx";
 
-interface Booking {
+export interface Booking {
   id: number;
   name: string;
+  destination: string;
+  initialDate: Date;
+  finalDate: Date;
 }
 
 class BookingStore {
@@ -12,7 +15,13 @@ class BookingStore {
     this.bookings.push(booking);
   }
 
-  @action updateBooking(bookingId: number, updatedBooking: Booking) {
+  @action updateBooking({
+    bookingId,
+    updatedBooking,
+  }: {
+    bookingId: number;
+    updatedBooking: Booking;
+  }) {
     const index = this.bookings.findIndex(
       (booking) => booking.id === bookingId
     );

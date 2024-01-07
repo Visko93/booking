@@ -3,7 +3,7 @@
 import * as React from "react";
 import { addDays, format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
-import { DateRange } from "react-day-picker";
+import { DateRange, SelectRangeEventHandler } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,13 +14,37 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
+const NUMBER_OF_MONTHS = 1;
+interface DatePickerProps {
+  onSelect: ({
+    from,
+    to,
+  }: {
+    from: Date | undefined;
+    to: Date | undefined;
+  }) => void;
+  initialDate?: Date;
+  finalDate?: Date;
+  className?: string;
+}
 export function DatePickerWithRange({
   className,
-}: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
-    from: new Date(),
-    to: addDays(new Date(), 20),
-  });
+  onSelect,
+  initialDate,
+  finalDate,
+}: DatePickerProps) {
+  const date = {
+    from: initialDate,
+    to: finalDate,
+  };
+
+  const setDate: SelectRangeEventHandler = (date) => {
+    if (!date) return;
+    onSelect({
+      from: date.from ? date.from : undefined,
+      to: date.to ? date.to : undefined,
+    });
+  };
 
   return (
     <div className={cn("grid gap-2", className)}>
@@ -56,7 +80,7 @@ export function DatePickerWithRange({
             defaultMonth={date?.from}
             selected={date}
             onSelect={setDate}
-            numberOfMonths={2}
+            numberOfMonths={NUMBER_OF_MONTHS}
           />
         </PopoverContent>
       </Popover>

@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Check, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -17,6 +16,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useEffect, useState } from "react";
 
 // Possible booking destinations
 const destinations = [
@@ -27,9 +27,13 @@ const destinations = [
   { label: "Tokyo", value: "tokyo" },
 ];
 
-export function Combobox() {
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
+export function Combobox({ onSelect }: { onSelect: (value: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    onSelect(value);
+  }, [value]);
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -39,22 +43,23 @@ export function Combobox() {
           role="combobox"
           aria-expanded={open}
           className="w-[200px] justify-between"
+          onClick={() => setOpen(!open)}
         >
           {value
-            ? destinations.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            ? destinations.find((destiny) => destiny.value === value)?.label
+            : "Select destiny..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
-          <CommandEmpty>No framework found.</CommandEmpty>
+          <CommandInput placeholder="Search destiny..." />
+          <CommandEmpty>No destiny found.</CommandEmpty>
           <CommandGroup>
-            {destinations.map((framework) => (
+            {destinations.map((destiny) => (
               <CommandItem
-                key={framework.value}
-                value={framework.value}
+                key={destiny.value}
+                value={destiny.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue);
                   setOpen(false);
@@ -63,10 +68,10 @@ export function Combobox() {
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
+                    value === destiny.value ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {framework.label}
+                {destiny.label}
               </CommandItem>
             ))}
           </CommandGroup>
