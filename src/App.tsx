@@ -1,14 +1,36 @@
 import { useState } from "react";
 import { Input } from "components/ui/input";
 import { NavBar } from "components/common";
+import { Button } from "components/ui/button";
+import { DatePickerWithRange } from "components/booking/DatePicker";
+import { Combobox } from "components/common/ComboBox";
 
-const Hero = () => {
+function BookingActions() {
   return (
-    <div>
-      <Input />
+    <div className="flex  justify-center">
+      <DatePickerWithRange />
+      <Combobox />
+      <Button variant="secondary">Book</Button>
     </div>
   );
-};
+}
+
+function Hero() {
+  return (
+    <div
+      className="flex flex-col justify-center items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]"
+      style={{
+        backgroundImage: "url(/images/hero.jpg)",
+      }}
+    >
+      <h1 className="text-4xl font-bold">Book your staying!</h1>
+      <div className="flex flex-col justify-center items-center">
+        <Input />
+        <BookingActions />
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const [count, setCount] = useState(0);
