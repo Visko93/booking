@@ -18,27 +18,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const frameworks = [
-  {
-    value: "next.js",
-    label: "Next.js",
-  },
-  {
-    value: "sveltekit",
-    label: "SvelteKit",
-  },
-  {
-    value: "nuxt.js",
-    label: "Nuxt.js",
-  },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
+// Possible booking destinations
+const destinations = [
+  { label: "Paris", value: "paris" },
+  { label: "London", value: "london" },
+  { label: "New York", value: "new-york" },
+  { label: "Berlin", value: "berlin" },
+  { label: "Tokyo", value: "tokyo" },
 ];
 
 export function Combobox() {
@@ -55,7 +41,7 @@ export function Combobox() {
           className="w-[200px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
+            ? destinations.find((framework) => framework.value === value)?.label
             : "Select framework..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -65,7 +51,7 @@ export function Combobox() {
           <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
-            {frameworks.map((framework) => (
+            {destinations.map((framework) => (
               <CommandItem
                 key={framework.value}
                 value={framework.value}

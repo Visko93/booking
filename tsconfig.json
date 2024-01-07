@@ -19,12 +19,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "experimentalDecorators": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
       "components/*": ["./src/components/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*.tsx", "src/**/*.ts"],
+  "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
