@@ -17,12 +17,7 @@ function BookingActions() {
 
 function Hero() {
   return (
-    <div
-      className="flex flex-col justify-center items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]"
-      style={{
-        backgroundImage: "url(/images/hero.jpg)",
-      }}
-    >
+    <div className="flex flex-col justify-center items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]">
       <h1 className="text-4xl font-bold">Book your staying!</h1>
       <div className="flex flex-col justify-center items-center">
         <Input />
@@ -37,7 +32,13 @@ function App() {
 
   return (
     <>
-      <section>
+      <section
+        className="flex flex-col justify-center items-center"
+        style={{
+          backgroundImage: "url('/assets/images/hero.jpg')",
+          backgroundSize: "cover",
+        }}
+      >
         <header className="flex flex-1 justify-center ">
           <NavBar />
         </header>

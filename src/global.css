@@ -72,5 +72,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    .nav__item {
+      @apply flex items-center justify-center bg-transparent text-white rounded-lg hover:bg-opacity-10;
+    }
   }
 }
