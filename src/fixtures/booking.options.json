@@ -1,0 +1,94 @@
+{
+  "places": [
+    {
+      "datesBooked": "2024-03-15 to 2024-03-20",
+      "name": "Cozy Cottage Retreat",
+      "price": "$150/night",
+      "images": ["image1.jpg", "image2.jpg", "image3.jpg"],
+      "address": "123 Main Street, Anytown, USA",
+      "reviewRate": 4.8,
+      "reviewQuantity": 45
+    },
+    {
+      "datesBooked": "2024-04-10 to 2024-04-15",
+      "name": "Luxury Beachfront Villa",
+      "price": "$400/night",
+      "images": ["image4.jpg", "image5.jpg", "image6.jpg"],
+      "address": "456 Ocean Avenue, Seaside City, USA",
+      "reviewRate": 4.9,
+      "reviewQuantity": 75
+    },
+    {
+      "datesBooked": "2024-05-22 to 2024-05-29",
+      "name": "Mountain View Cabin",
+      "price": "$180/night",
+      "images": ["image7.jpg", "image8.jpg", "image9.jpg"],
+      "address": "789 Pine Road, Mountain Town, USA",
+      "reviewRate": 4.7,
+      "reviewQuantity": 60
+    },
+    {
+      "datesBooked": "2024-06-05 to 2024-06-10",
+      "name": "Urban Loft in Downtown",
+      "price": "$250/night",
+      "images": ["image10.jpg", "image11.jpg", "image12.jpg"],
+      "address": "101 Downtown Street, City Center, USA",
+      "reviewRate": 4.6,
+      "reviewQuantity": 55
+    },
+    {
+      "datesBooked": "2024-07-18 to 2024-07-25",
+      "name": "Rustic Farmhouse Retreat",
+      "price": "$170/night",
+      "images": ["image13.jpg", "image14.jpg", "image15.jpg"],
+      "address": "321 Farm Road, Countryside, USA",
+      "reviewRate": 4.9,
+      "reviewQuantity": 40
+    },
+    {
+      "datesBooked": "2024-08-12 to 2024-08-19",
+      "name": "Lakefront Cabin Getaway",
+      "price": "$220/night",
+      "images": ["image16.jpg", "image17.jpg", "image18.jpg"],
+      "address": "654 Lakeview Drive, Lakeside, USA",
+      "reviewRate": 4.8,
+      "reviewQuantity": 65
+    },
+    {
+      "datesBooked": "2024-09-03 to 2024-09-10",
+      "name": "Historic Townhouse",
+      "price": "$190/night",
+      "images": ["image19.jpg", "image20.jpg", "image21.jpg"],
+      "address": "987 Historical Lane, Oldtown, USA",
+      "reviewRate": 4.7,
+      "reviewQuantity": 50
+    },
+    {
+      "datesBooked": "2024-10-15 to 2024-10-22",
+      "name": "Ski Chalet Retreat",
+      "price": "$280/night",
+      "images": ["image22.jpg", "image23.jpg", "image24.jpg"],
+      "address": "369 Ski Hill Road, Snowy Village, USA",
+      "reviewRate": 4.9,
+      "reviewQuantity": 70
+    },
+    {
+      "datesBooked": "2024-11-08 to 2024-11-15",
+      "name": "Modern City Apartment",
+      "price": "$200/night",
+      "images": ["image25.jpg", "image26.jpg", "image27.jpg"],
+      "address": "505 Urban Avenue, Metropolitan, USA",
+      "reviewRate": 4.6,
+      "reviewQuantity": 48
+    },
+    {
+      "datesBooked": "2024-12-20 to 2024-12-27",
+      "name": "Beachfront Bungalow",
+      "price": "$300/night",
+      "images": ["image28.jpg", "image29.jpg", "image30.jpg"],
+      "address": "789 Sandy Beach Road, Coastal Paradise, USA",
+      "reviewRate": 4.8,
+      "reviewQuantity": 55
+    }
+  ]
+}
