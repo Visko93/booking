@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 // Must be a glassmorphism style
 export function NavBar() {
   return (
-    <NavigationMenu>
+    <NavigationMenu className="hidden md:flex md:justify-center md:items-center md:space-x-4">
       <NavigationMenuList className="flex justify-center items-center space-x-4">
         <NavigationMenuItem>
           <NavigationMenuTrigger className="nav__item">

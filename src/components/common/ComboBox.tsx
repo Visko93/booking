@@ -27,9 +27,14 @@ const destinations = [
   { label: "Tokyo", value: "tokyo" },
 ];
 
-export function Combobox({ onSelect }: { onSelect: (value: string) => void }) {
+export function Combobox({
+  value,
+  onSelect,
+}: {
+  value: string;
+  onSelect: (value: string) => void;
+}) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
 
   useEffect(() => {
     onSelect(value);
@@ -42,7 +47,7 @@ export function Combobox({ onSelect }: { onSelect: (value: string) => void }) {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-full md:w-[200px] justify-between"
           onClick={() => setOpen(!open)}
         >
           {value
@@ -51,7 +56,7 @@ export function Combobox({ onSelect }: { onSelect: (value: string) => void }) {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-full md:w-[200px] p-0">
         <Command>
           <CommandInput placeholder="Search destiny..." />
           <CommandEmpty>No destiny found.</CommandEmpty>
@@ -61,7 +66,7 @@ export function Combobox({ onSelect }: { onSelect: (value: string) => void }) {
                 key={destiny.value}
                 value={destiny.value}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue);
+                  onSelect(currentValue === value ? "" : currentValue);
                   setOpen(false);
                 }}
               >

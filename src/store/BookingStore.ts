@@ -1,4 +1,4 @@
-import { observable, action, computed } from "mobx";
+import { observable, action, computed, makeObservable } from "mobx";
 
 export interface Booking {
   id: number;
@@ -9,6 +9,9 @@ export interface Booking {
 }
 
 class BookingStore {
+  constructor() {
+    makeObservable(this);
+  }
   @observable bookings: Booking[] = [];
 
   @action createBooking(booking: Booking) {
