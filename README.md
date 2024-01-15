@@ -51,3 +51,31 @@ For creating and updating bookings, a unique identifier (`id`) is generated base
 ### Separation of Concerns
 
 The `BookingActions` component focuses solely on managing the form and form submission logic. It abstracts away the complexities of handling form data and communicates with the `BookingStore` through a callback. This separation of concerns makes the code more maintainable and testable.
+
+## Testing the Booking App
+
+### Cypress End-to-End Testing
+
+The Booking App is thoroughly tested using [Cypress](https://www.cypress.io/), an end-to-end testing framework. Cypress allows us to simulate user interactions and verify that the application functions as expected.
+
+#### Basic Functions
+
+1. **Writes a Title**
+
+   - The test visits the app, finds the title input, writes a title, and verifies that the input value matches the entered title.
+
+2. **Selects a Date**
+
+   - This test simulates selecting initial and final dates in the date range picker. It verifies that the selected dates are displayed correctly.
+
+3. **Selects a Destination**
+
+   - In this test, the app selects a destination from the dropdown list by typing and clicking on an option.
+
+#### Create Booking
+
+4. **Submit a Booking**
+
+   - This test covers the complete process of creating a booking. It fills in the title, selects a date range, and chooses a destination. Then, it clicks the submit button and checks if the booking is successfully created.
+
+Additional tests should be added to cover error handling, validation, edge cases, and unit testing, but I've choose not to implement it due time constrains.
