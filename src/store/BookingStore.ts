@@ -39,6 +39,10 @@ class BookingStore {
     return this.bookings.find((booking) => booking.id === id);
   }
 
+  @action bookingExist(id: number) {
+    return this.bookings.some((booking) => booking.id === id);
+  }
+
   @computed get bookingsCount() {
     return this.bookings.length;
   }

@@ -26,6 +26,7 @@ import { format } from "date-fns";
 import { Calendar } from "../ui/calendar";
 import { DateRange } from "react-day-picker";
 import bookingStore, { Booking } from "@/store/BookingStore";
+import { useMemo } from "react";
 
 const destinations: { label: string; value: string }[] = [
   { label: "Paris", value: "paris" },
@@ -57,9 +58,27 @@ const defaultValues: BookingFormValue = {
   destination: "",
 };
 
-const BookingActions = observer(() => {
+const BookingActions = observer(({ id }: { id?: number }) => {
+  const getDefaultValue = () => {
+    console.debug("Id", id);
+    if (!id) return defaultValues;
+    const booking = bookingStore.getBooking(id);
+    const parsedBooking = {
+      ...booking,
+      title: booking?.name,
+      rangeDate: {
+        from: new Date(booking?.initialDate!),
+        to: new Date(booking?.finalDate!),
+      },
+    };
+    if (!booking) return defaultValues;
+    return parsedBooking;
+  };
+
+  const initialState = useMemo(() => getDefaultValue(), [id]);
+  console.log(initialState);
   const form = useForm<BookingFormValue>({
-    defaultValues,
+    defaultValues: initialState,
     resolver: zodResolver(schema),
   });
 
@@ -77,13 +96,19 @@ const BookingActions = observer(() => {
       initialDate: format(data.rangeDate.from!, "LLL dd, y"),
       finalDate: format(data.rangeDate.to!, "LLL dd, y"),
     };
+
+    if (bookingStore.bookingExist(data.id)) {
+      bookingStore.updateBooking({ id: data.id, updatedBooking: parsedData });
+      return;
+    }
     bookingStore.createBooking(parsedData);
   };
+
   return (
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col justify-center items-center w-full md:w-[500px] bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 p-4 space-y-4 "
+        className="flex flex-col justify-center items-center w-full bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0 p-4 space-y-4 "
       >
         <FormField
           control={form.control}
@@ -113,7 +138,7 @@ const BookingActions = observer(() => {
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "w-full pl-3 text-left font-normal",
+                          "w-full pl-3 text-left font-normal truncate justify-between",
                           !field.value && "text-muted-foreground"
                         )}
                         data-testid="rangeDate"
@@ -173,7 +198,7 @@ const BookingActions = observer(() => {
                             ? destinations.find(
                                 (destiny) => destiny.value === field.value
                               )?.label
-                            : "Select language"}
+                            : "Select your destination"}
                           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                         </Button>
                       </FormControl>

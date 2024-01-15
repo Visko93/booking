@@ -17,6 +17,7 @@ import {
 import bookingStore, { Booking } from "@/store/BookingStore";
 import { format } from "date-fns";
 import { observer } from "mobx-react";
+import { BookingCardDialog } from "./BookingDialog";
 
 const EmptyBookings = () => (
   <div className="flex flex-col justify-center items-center bg-gray-100 rounded-md p-4 space-y-4">
@@ -69,7 +70,9 @@ const BookingsList = observer(() => {
     return <EmptyBookings />;
   }
 
-  const handleToggleEdit = (id: number) => {};
+  const handleToggleEdit = (id: number) => {
+    return;
+  };
 
   return (
     <div className="flex flex-col justify-center items-center bg-gray-100 rounded-md p-4 space-y-4">
@@ -100,12 +103,7 @@ const BookingsList = observer(() => {
                   <p>Some content</p>
                 </CardContent>
                 <CardFooter className="flex flex-row justify-end items-center space-x-2">
-                  <Button
-                    variant="default"
-                    onClick={() => handleToggleEdit(booking.id)}
-                  >
-                    Edit
-                  </Button>
+                  <BookingCardDialog id={booking.id} />
                   <Button
                     variant="default"
                     onClick={() => handleDelete(booking.id)}
