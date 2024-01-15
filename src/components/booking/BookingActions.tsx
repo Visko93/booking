@@ -11,7 +11,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Popover, PopoverContent } from "../ui/popover";
+import { Popover, PopoverContent } from "components/ui/popover";
 import { PopoverTrigger } from "@radix-ui/react-popover";
 import { cn, createEnumFromObjectArray } from "@/lib/utils";
 import { CalendarIcon, CheckIcon, ChevronsUpDown } from "lucide-react";
@@ -21,20 +21,14 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "../ui/command";
+} from "components/ui/command";
 import { format } from "date-fns";
-import { Calendar } from "../ui/calendar";
+import { Calendar } from "components/ui/calendar";
 import { DateRange } from "react-day-picker";
 import bookingStore, { Booking } from "@/store/BookingStore";
 import { useMemo } from "react";
 
-const destinations: { label: string; value: string }[] = [
-  { label: "Paris", value: "paris" },
-  { label: "London", value: "london" },
-  { label: "New York", value: "new-york" },
-  { label: "Berlin", value: "berlin" },
-  { label: "Tokyo", value: "tokyo" },
-];
+import destinations from "@/fixtures/bookings.destinations.json";
 
 const enumLike = createEnumFromObjectArray(destinations);
 const DestinationsEnum = z.nativeEnum(enumLike);

@@ -79,3 +79,9 @@ The Booking App is thoroughly tested using [Cypress](https://www.cypress.io/), a
    - This test covers the complete process of creating a booking. It fills in the title, selects a date range, and chooses a destination. Then, it clicks the submit button and checks if the booking is successfully created.
 
 Additional tests should be added to cover error handling, validation, edge cases, and unit testing, but I've choose not to implement it due time constrains.
+
+Other possibles enhacements:
+
+- Routes
+- Better validation
+- Fail Screens/components

@@ -1,0 +1,7 @@
+[
+  { "label": "Paris", "value": "paris" },
+  { "label": "London", "value": "london" },
+  { "label": "New York", "value": "new-york" },
+  { "label": "Berlin", "value": "berlin" },
+  { "label": "Tokyo", "value": "tokyo" }
+]

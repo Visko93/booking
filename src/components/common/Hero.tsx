@@ -8,7 +8,7 @@ export const Hero = observer(() => {
     bookingStore.createBooking(data);
   };
   return (
-    <div className="flex flex-col justify-center items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]">
+    <div className="flex flex-col justify-center md:w-1/2 items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]">
       <h1 className="text-4xl font-bold text-slate-100 text-center mb-2">
         Book your staying!
       </h1>
