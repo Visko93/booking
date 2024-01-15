@@ -82,7 +82,11 @@ const BookingsList = observer(() => {
       >
         <CarouselContent className="-ml-1">
           {bookingStore.bookings.map((booking) => (
-            <CarouselItem key={booking.id} className="pl-1 lg:max-w-[350px] ">
+            <CarouselItem
+              key={booking.id}
+              data-testid="booking"
+              className="pl-1 lg:max-w-[350px] "
+            >
               <Card>
                 <CardHeader>
                   <CardTitle>{booking.name}</CardTitle>
@@ -105,6 +109,7 @@ const BookingsList = observer(() => {
                   <Button
                     variant="default"
                     onClick={() => handleDelete(booking.id)}
+                    data-testid="delete"
                   >
                     Delete
                   </Button>

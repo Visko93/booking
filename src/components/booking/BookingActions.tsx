@@ -91,7 +91,11 @@ const BookingActions = observer(() => {
           render={({ field }) => (
             <FormItem className="w-full">
               <FormControl>
-                <Input placeholder="Give your booking a name..." {...field} />
+                <Input
+                  data-testid="title"
+                  placeholder="Give your booking a name..."
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -112,6 +116,7 @@ const BookingActions = observer(() => {
                           "w-full pl-3 text-left font-normal",
                           !field.value && "text-muted-foreground"
                         )}
+                        data-testid="rangeDate"
                       >
                         {field.value?.from ? (
                           field.value.to ? (
@@ -158,6 +163,7 @@ const BookingActions = observer(() => {
                         <Button
                           variant="outline"
                           role="combobox"
+                          data-testid="destination"
                           className={cn(
                             "w-full  justify-between",
                             !field.value && "text-muted-foreground"
@@ -210,6 +216,7 @@ const BookingActions = observer(() => {
             variant="default"
             className="flex-1 justify-center md:m-0 w-full md:w-fit "
             type="submit"
+            data-testid="submit"
           >
             Book
           </Button>
