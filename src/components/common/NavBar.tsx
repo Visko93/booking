@@ -50,9 +50,9 @@ export function NavBar() {
                       Vinicius
                     </div>
                     <p className="text-sm leading-tight text-muted-foreground">
-                      Beautifully designed components that you can copy and
-                      paste into your apps. Accessible. Customizable. Open
-                      Source.
+                      I've been a software developer for four years. I use
+                      React, Node, and BabylonJS daily to create interactive and
+                      immersive interfaces for users.
                     </p>
                   </a>
                 </NavigationMenuLink>
