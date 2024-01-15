@@ -4,8 +4,8 @@ export interface Booking {
   id: number;
   name: string;
   destination: string;
-  initialDate: Date;
-  finalDate: Date;
+  initialDate: string;
+  finalDate: string;
 }
 
 class BookingStore {
@@ -19,15 +19,13 @@ class BookingStore {
   }
 
   @action updateBooking({
-    bookingId,
+    id,
     updatedBooking,
   }: {
-    bookingId: number;
+    id: number;
     updatedBooking: Booking;
   }) {
-    const index = this.bookings.findIndex(
-      (booking) => booking.id === bookingId
-    );
+    const index = this.bookings.findIndex((booking) => booking.id === id);
     if (index !== -1) {
       this.bookings[index] = updatedBooking;
     }
@@ -35,6 +33,10 @@ class BookingStore {
 
   @action deleteBooking(bookingId: number) {
     this.bookings = this.bookings.filter((booking) => booking.id !== bookingId);
+  }
+
+  @action getBooking(id: number) {
+    return this.bookings.find((booking) => booking.id === id);
   }
 
   @computed get bookingsCount() {

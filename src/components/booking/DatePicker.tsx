@@ -23,6 +23,7 @@ interface DatePickerProps {
     from: Date | undefined;
     to: Date | undefined;
   }) => void;
+  error: string | null;
   initialDate?: Date;
   finalDate?: Date;
   className?: string;
@@ -32,6 +33,7 @@ export function DatePickerWithRange({
   onSelect,
   initialDate,
   finalDate,
+  error = null,
 }: DatePickerProps) {
   const date = {
     from: initialDate,
@@ -52,7 +54,7 @@ export function DatePickerWithRange({
         <PopoverTrigger asChild>
           <Button
             id="date"
-            variant={"outline"}
+            variant={error ? "destructive" : "outline"}
             className={cn(
               "w-full justify-start text-left font-normal",
               !date && "text-muted-foreground"
@@ -84,6 +86,9 @@ export function DatePickerWithRange({
           />
         </PopoverContent>
       </Popover>
+      {error && (
+        <span className="text-sm text-red-500 font-medium">{error}</span>
+      )}
     </div>
   );
 }

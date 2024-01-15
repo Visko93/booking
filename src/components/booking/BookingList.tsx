@@ -42,17 +42,24 @@ const EmptyBookings = () => (
   </div>
 );
 
+type updateBookingProps = Partial<Booking>;
 const BookingsList = observer(() => {
-  const handleEdit = () => {
-    const mockBooking: Booking = {
-      id: 1,
-      name: "John Doe",
-      destination: "Paris",
-      initialDate: new Date(),
-      finalDate: new Date(),
+  const handleEdit = ({
+    id,
+    values,
+  }: {
+    id: number;
+    values: Partial<Booking>;
+  }) => {
+    const currentBooking = bookingStore.getBooking(id);
+    if (!currentBooking) return;
+
+    const updatedBooking = {
+      ...currentBooking,
+      ...values,
     };
 
-    bookingStore.updateBooking({ bookingId: 1, updatedBooking: mockBooking });
+    bookingStore.updateBooking({ id, updatedBooking });
   };
   const handleDelete = (id: number) => {
     bookingStore.deleteBooking(id);
@@ -62,18 +69,20 @@ const BookingsList = observer(() => {
     return <EmptyBookings />;
   }
 
+  const handleToggleEdit = (id: number) => {};
+
   return (
     <div className="flex flex-col justify-center items-center bg-gray-100 rounded-md p-4 space-y-4">
       <h1 className="text-4xl font-bold  text-start mb-2">Your Bookings</h1>
       <Carousel
-        className="w-full max-w-sm"
+        className="w-full md:w-[500px]"
         opts={{
           align: "start",
         }}
       >
         <CarouselContent className="-ml-1">
           {bookingStore.bookings.map((booking) => (
-            <CarouselItem key={booking.id} className="pl-1">
+            <CarouselItem key={booking.id} className="pl-1 lg:max-w-[350px] ">
               <Card>
                 <CardHeader>
                   <CardTitle>{booking.name}</CardTitle>
@@ -87,7 +96,10 @@ const BookingsList = observer(() => {
                   <p>Some content</p>
                 </CardContent>
                 <CardFooter className="flex flex-row justify-end items-center space-x-2">
-                  <Button variant="default" onClick={handleEdit}>
+                  <Button
+                    variant="default"
+                    onClick={() => handleToggleEdit(booking.id)}
+                  >
                     Edit
                   </Button>
                   <Button
@@ -101,8 +113,8 @@ const BookingsList = observer(() => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious hidden={bookingStore.bookings.length <= 1} />
+        <CarouselNext hidden={bookingStore.bookings.length <= 1} />
       </Carousel>
     </div>
   );
