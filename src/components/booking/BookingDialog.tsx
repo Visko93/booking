@@ -28,6 +28,13 @@ export const BookingCardDialog = observer(({ id }: { id: number }) => {
     }
   }, [id]);
 
+  const handleSubmission = (data: Booking) => {
+    if (!booking) return;
+    bookingStore.updateBooking({
+      id: booking.id,
+      updatedBooking: data,
+    });
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -49,7 +56,10 @@ export const BookingCardDialog = observer(({ id }: { id: number }) => {
                 Make changes to your profile here. Click save when you're done.
               </DialogDescription>
             </DialogHeader>
-            <BookingActions id={booking?.id} />
+            <BookingActions
+              id={booking?.id}
+              handleSubmission={handleSubmission}
+            />
           </>
         )}
       </DialogContent>

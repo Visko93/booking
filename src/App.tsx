@@ -1,17 +1,6 @@
 import { NavBar } from "components/common";
-import { BookingActions } from "components/booking/BookingActions";
 import { BookingsList } from "components/booking/BookingList";
-
-function Hero() {
-  return (
-    <div className="flex flex-col justify-center items-center bg-hero-pattern bg-cover bg-center bg-no-repeat h-[500px]">
-      <h1 className="text-4xl font-bold text-slate-100 text-center mb-2">
-        Book your staying!
-      </h1>
-      <BookingActions />
-    </div>
-  );
-}
+import { Hero } from "components/common/Hero";
 
 const heroStyling = {
   backgroundImage: "url('/assets/images/hero.jpg')",
